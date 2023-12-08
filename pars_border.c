@@ -1,39 +1,38 @@
+#include "so_long.h"
 
-int map_readable(int fd)
+int     check_one(char *str)
 {
-
-}
-
-int	check_up_border(int str)
-{
-    int i;
-
-    i = 0;
-    while (str[i][0] != '\n')
-    {
-        if (str[i][0] == 1)
+        int     i;
+        i = 0;
+        while (str[i])
         {
-            i++;
-            if (str[i][0] == '\n')
-            {
+        if (str[i] == '1')
                 return (1);
-            }
         }
-        else
-            return (0)
-    }
-
-}
-int	check_side_border()
-{
-
-}
-int	check_down_border()
-{
-
+        return (0);
 }
 
-int all_border()
+int	check_up_border(char *str)
 {
+        int     i;
+        i = 0;
+        while (str[i] != '\n' && check_one(str) == 1)
+        {
+                i++;
+        }
+        return (0);
+}
+int	check_side_border(void)
+{
+	
+        return (0);
+}
+int	check_down_border(void)
+{
+        return (0);
+}
 
+int	all_border(void)
+{
+        return (0);
 }

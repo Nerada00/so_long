@@ -1,29 +1,39 @@
-SRC = so_long.c\
+#fonction
 
-OBJS = ${SRCS:.c =.o}
+SRCS		= 	so_long.c \
+				pars_border.c \
+				main.c \
+				init_map.c \
+				get_next_line.c \
+				get_next_line_utils.c \
+				ft_split.c \
 
-NAME = so_long
 
-CC = cc
+OBJS		= $(SRCS:.c=.o)
 
-CFLAGS = 		-Wall -Werror -Wextra -g -L/mlx 
+#commande
 
-L_FLAGS =		-lmlx -lXext -lX11
+NAME		=		so_long
+CC			=		cc
+CFLAGS		= 		-Wall -Werror -Wextra -g 
+#L_FLAGS 	=		-lmlx -lXext -lX11
+RM			=		rm -f
 
-RM =			rm -f
-
-all	:	${NAME}
+all	: ${NAME}
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(L_FLAGS) -c $< -o $@
-$(NAME) :       $(OBJS)
-	$(CC) $(OBJ) -Lmlx-macos- -lmlx-macos -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-clean	:	$(RM) $(OBJS)
 
-fclean	:	clean
+$(NAME)	: $(OBJS)
+		$(CC) $(OBJS) -o $(NAME)
 
-			${RM} ${NAME}
+
+clean:
+	$(RM) $(OBJS)
+
+fclean: clean
+	$(RM) $(NAME)
 
 re	:	fclean all
 
