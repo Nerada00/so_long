@@ -6,7 +6,7 @@
 /*   By: abdmessa <abdmessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:30:35 by abdmessa          #+#    #+#             */
-/*   Updated: 2023/12/08 20:32:34 by abdmessa         ###   ########.fr       */
+/*   Updated: 2023/12/11 04:19:13 by abdmessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ char	*chr_map(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
-		perror("Erreur lors de l'ouverture du fichier");
-		return (NULL);
+		return (printf("%s", "Erreur lors de l'ouverture"), NULL);
 	}
 	tmp = get_next_line(fd);
 	while (tmp != NULL)
