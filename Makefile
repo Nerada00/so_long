@@ -9,6 +9,8 @@ SRCS		= 	so_long.c \
 				ft_split.c \
 				features.c \
 				positions.c \
+				path_check.c \
+				path_finding.c \
 
 
 OBJS		= $(SRCS:.c=.o)

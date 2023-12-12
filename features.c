@@ -6,7 +6,7 @@
 /*   By: abdmessa <abdmessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 03:19:12 by abdmessa          #+#    #+#             */
-/*   Updated: 2023/12/11 06:11:55 by abdmessa         ###   ########.fr       */
+/*   Updated: 2023/12/12 00:12:11 by abdmessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	check_exit(char **map)
 	if (count == 1)
 		return (1);
 	else
-		return (printf("plusieurs sortis"), 0);
+		return (printf("plusieurs sortis\n"), 0);
 }
 int	check_spawn(char **map)
 {
