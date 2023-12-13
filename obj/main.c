@@ -1,48 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_map.c                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abdmessa <abdmessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/08 14:30:35 by abdmessa          #+#    #+#             */
-/*   Updated: 2023/12/11 04:19:13 by abdmessa         ###   ########.fr       */
+/*   Created: 2023/12/08 14:30:28 by abdmessa          #+#    #+#             */
+/*   Updated: 2023/12/13 06:19:20 by abdmessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	*chr_map(char *file)
+void	free_tab(char **tab)
 {
-	int		i;
-	int		fd;
-	char	*tmp;
-	char	*str;
+	int	i;
 
-    str = NULL;
 	i = 0;
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
+	while (tab[i])
 	{
-		return (printf("%s", "Erreur lors de l'ouverture"), NULL);
+		free(tab[i++]);
 	}
-	tmp = get_next_line(fd);
-	while (tmp != NULL)
-	{
-		str = ft_strjoin(str, tmp);
-		tmp = get_next_line(fd);
-	}
-	return (str);
+	free(tab);
+}
+int	error(t_data *data, char *str)
+{
+	ft_printf("Erreur de map: %s\n", str);
+	free_tab(data->tab);
+	free_tab(data->map);
+	exit(1);
 }
 
-char	**full_map(char *file)
+int	main(int ac, char **av)
 {
-	int		i;
-	char	**map;
-	char	*str;
+	static t_data	data = {0};
 
-	i = 0;
-	str = chr_map(file);
-	map = ft_split(str, '\n');
-	return (map);
+	if (ac != 2)
+		return (ft_printf("Veuillez entrer un argument\n"));
+	data.file = av[1];
+	path_finding(&data);
+	return (0);
 }

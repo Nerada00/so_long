@@ -6,11 +6,11 @@
 /*   By: abdmessa <abdmessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:32:54 by abdmessa          #+#    #+#             */
-/*   Updated: 2023/12/08 17:38:01 by abdmessa         ###   ########.fr       */
+/*   Updated: 2023/12/13 05:12:17 by abdmessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 char	*ft_strdup(char *str)
 {

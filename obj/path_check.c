@@ -6,7 +6,7 @@
 /*   By: abdmessa <abdmessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 22:19:57 by abdmessa          #+#    #+#             */
-/*   Updated: 2023/12/12 04:37:23 by abdmessa         ###   ########.fr       */
+/*   Updated: 2023/12/13 04:50:34 by abdmessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	path_up(t_data *data, int i, int j)
 		i--;
 	}
 }
+
 void	path_down(t_data *data, int i, int j)
 {
 	while (data->tab[i][j] != '1')
@@ -36,6 +37,7 @@ void	path_down(t_data *data, int i, int j)
 		i++;
 	}
 }
+
 void	path_right(t_data *data, int i, int j)
 {
 	while (data->tab[i][j] != '1')
@@ -48,6 +50,7 @@ void	path_right(t_data *data, int i, int j)
 		j++;
 	}
 }
+
 void	path_left(t_data *data, int i, int j)
 {
 	while (data->tab[i][j] != '1')
@@ -60,6 +63,7 @@ void	path_left(t_data *data, int i, int j)
 		j--;
 	}
 }
+
 
 void	all_path(t_data *data, int i, int j)
 {

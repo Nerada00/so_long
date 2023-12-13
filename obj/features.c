@@ -6,25 +6,25 @@
 /*   By: abdmessa <abdmessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 03:19:12 by abdmessa          #+#    #+#             */
-/*   Updated: 2023/12/12 00:12:11 by abdmessa         ###   ########.fr       */
+/*   Updated: 2023/12/13 05:29:56 by abdmessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	check_others(char **map)
+int	check_others(t_data *data)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	while (map[i])
+	while (data->map[i])
 	{
-		while (map[i][j])
+		while (data->map[i][j])
 		{
-			if (map[i][j] != 'C' && map[i][j] != 'P' && map[i][j] != 'E'
-				&& map[i][j] != '0' && map[i][j] != '1')
+			if (data->map[i][j] != 'C' && data->map[i][j] != 'P' && data->map[i][j] != 'E'
+				&& data->map[i][j] != '0' && data->map[i][j] != '1')
 				return (0);
 			j++;
 		}
@@ -33,18 +33,18 @@ int	check_others(char **map)
 	}
 	return (1);
 }
-int	check_item(char **map)
+int	check_item(t_data *data)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	while (map[i])
+	while (data->map[i])
 	{
-		while (map[i][j])
+		while (data->map[i][j])
 		{
-			if (map[i][j] == 'C')
+			if (data->map[i][j] == 'C')
 				return (1);
 			j++;
 		}
@@ -54,7 +54,7 @@ int	check_item(char **map)
 	return (0);
 }
 
-int	check_exit(char **map)
+int	check_exit(t_data *data)
 {
 	int	i;
 	int	j;
@@ -63,11 +63,11 @@ int	check_exit(char **map)
 	count = 0;
 	i = 0;
 	j = 0;
-	while (map[i])
+	while (data->map[i])
 	{
-		while (map[i][j])
+		while (data->map[i][j])
 		{
-			if (map[i][j] == 'E')
+			if (data->map[i][j] == 'E')
 				count++;
 			j++;
 		}
@@ -77,9 +77,9 @@ int	check_exit(char **map)
 	if (count == 1)
 		return (1);
 	else
-		return (printf("plusieurs sortis\n"), 0);
+		return (ft_printf("plusieurs sortis\n"), 0);
 }
-int	check_spawn(char **map)
+int	check_spawn(t_data *data)
 {
 	int i;
 	int j;
@@ -88,11 +88,11 @@ int	check_spawn(char **map)
 	count = 0;
 	i = 0;
 	j = 0;
-	while (map[i])
+	while (data->map[i])
 	{
-		while (map[i][j])
+		while (data->map[i][j])
 		{
-			if (map[i][j] == 'P')
+			if (data->map[i][j] == 'P')
 				count++;
 			j++;
 		}
@@ -101,6 +101,8 @@ int	check_spawn(char **map)
 	}
 	if (count == 1)
 		return (1);
+	else if (count > 1)
+		return (ft_printf("Plusieurs spawn\n"), 0);
 	else
-		return (printf("plusieurs spawn"), 0);
+		return (ft_printf("Aucun spawn\n"), 0);
 }

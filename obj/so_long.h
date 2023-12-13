@@ -6,7 +6,7 @@
 /*   By: abdmessa <abdmessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:13:24 by abdmessa          #+#    #+#             */
-/*   Updated: 2023/12/12 04:37:47 by abdmessa         ###   ########.fr       */
+/*   Updated: 2023/12/13 05:32:27 by abdmessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # endif
 
 # include <fcntl.h>
+# include <stdarg.h>
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -37,21 +39,16 @@ typedef struct s_data
 
 }			t_data;
 
-/*
-enum		e_pos
-{
-	collect_x,
-	collect_y,
-	exit_x,
-	exit_y,
-	player_x,
-	player_y
-};
+// ft_printf
 
-int			pos[6];
-
-pos[collect_x];
- */
+int			ft_printf(const char *s, ...);
+int			ft_putnbr(int nb);
+int			ft_putchar(int c);
+int			ft_putstr(char *str);
+int			ft_count(int nb);
+int			ft_print_digit(unsigned long int nb, char *base);
+int			ft_print_format(char spec, va_list ap);
+size_t		ft_strlen2(char *str);
 
 //  gnl et utils
 
@@ -66,21 +63,23 @@ char		*get_next_line(int fd);
 char		**ft_split(char const *s, char c);
 
 //  check features
-int			check_item(char **map);
-int			check_spawn(char **map);
-int			check_exit(char **map);
-int			check_others(char **map);
+int			check_item(t_data *data);
+int			check_spawn(t_data *data);
+int			check_exit(t_data *data);
+int			check_others(t_data *data);
 
 //  check parsing
 
 char		*chr_map(char *str);
 int			checkfile(char *file);
 char		**full_map(char *str);
-int			check_up_border(char **map);
-int			check_down_border(char **map);
-int			check_side_border(char **map);
-int			check_len_line(char **map);
-int			all_check(char **map);
+int			check_up_border(t_data *data);
+int			check_down_border(t_data *data);
+int			check_side_border(t_data *data);
+int			check_len_line(t_data *data);
+int			all_check(t_data *data);
+
+void		check_to_print(t_data *data);
 
 //  grab position
 
@@ -89,7 +88,13 @@ void		grab_player_pos(t_data *data);
 
 //  path finding
 
-void	    all_path(t_data *data, int i, int j);
-void		path_finding(t_data *data);
+void		all_path(t_data *data, int i, int j);
+int			path_exit(t_data *data);
+int			path_collect(t_data *data);
+
+//	gestion d'erreur
+
+int			error(t_data *data, char *str);
+int			path_finding(t_data *data);
 
 #endif

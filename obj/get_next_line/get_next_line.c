@@ -6,11 +6,11 @@
 /*   By: abdmessa <abdmessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:32:42 by abdmessa          #+#    #+#             */
-/*   Updated: 2023/12/08 17:38:04 by abdmessa         ###   ########.fr       */
+/*   Updated: 2023/12/13 05:12:24 by abdmessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	ft_check_line(char *str, char c)
 {
