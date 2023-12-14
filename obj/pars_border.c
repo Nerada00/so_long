@@ -52,10 +52,8 @@ int	check_len_line(t_data *data)
 {
 	int	len;
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
 	len = ft_strlen(data->map[i]);
 	while (data->map[i])
 	{

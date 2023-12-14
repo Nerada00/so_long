@@ -6,7 +6,7 @@
 /*   By: abdmessa <abdmessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:30:35 by abdmessa          #+#    #+#             */
-/*   Updated: 2023/12/13 05:56:21 by abdmessa         ###   ########.fr       */
+/*   Updated: 2023/12/13 06:36:17 by abdmessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,13 @@ int	checkfile(char *file)
 }
 char	*chr_map(char *file)
 {
-	int		i;
+
 	int		fd;
 	char	*tmp;
 	char	*str;
 	bool	stop;
 
 	str = NULL;
-	i = 0;
 	stop = false;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
@@ -55,11 +54,9 @@ char	*chr_map(char *file)
 
 char	**full_map(char *file)
 {
-	int		i;
 	char	**map;
 	char	*str;
 
-	i = 0;
 	str = chr_map(file);
 	if (!str)
 		return (NULL);

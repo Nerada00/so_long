@@ -6,7 +6,7 @@
 /*   By: abdmessa <abdmessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:13:24 by abdmessa          #+#    #+#             */
-/*   Updated: 2023/12/13 05:32:27 by abdmessa         ###   ########.fr       */
+/*   Updated: 2023/12/13 23:31:16 by abdmessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "../mlx/mlx.h"
 
 typedef struct s_data
 {
