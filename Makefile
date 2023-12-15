@@ -10,7 +10,9 @@ SRCS = obj/so_long.c \
        obj/path_check.c \
        obj/path_finding.c \
        obj/printf/ft_printf.c \
-       obj/printf/ft_printf_fonction.c
+       obj/printf/ft_printf_fonction.c \
+       obj/move.c \
+       obj/mlx_setup.c \
 
 MLX = libmlx_Linux.a
 

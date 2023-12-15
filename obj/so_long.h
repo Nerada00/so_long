@@ -6,7 +6,7 @@
 /*   By: abdmessa <abdmessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:13:24 by abdmessa          #+#    #+#             */
-/*   Updated: 2023/12/13 23:31:16 by abdmessa         ###   ########.fr       */
+/*   Updated: 2023/12/15 05:27:11 by abdmessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 #  define BUFFER_SIZE 10
 # endif
 
+# define UP 65362
+# define DOWN 65364
+# define LEFT 65361
+# define RIGHT 65363
+
 # include <fcntl.h>
 # include <stdarg.h>
 # include <stdbool.h>
@@ -24,6 +29,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "../mlx/mlx.h"
+
 
 typedef struct s_data
 {
@@ -37,7 +43,13 @@ typedef struct s_data
 	int		player_x;
 	int		player_y;
 	int		read;
-
+	void	*mlx;
+	void 	*joueur;
+	void 	*mur;
+	void 	*sol;
+	void 	*exit;
+	void	*mlx_win;
+	int		keycode;
 }			t_data;
 
 // ft_printf
@@ -97,5 +109,19 @@ int			path_collect(t_data *data);
 
 int			error(t_data *data, char *str);
 int			path_finding(t_data *data);
+
+//	move 
+
+void    move_up(t_data *data);
+void    move_down(t_data *data);
+void    move_left(t_data *data);
+void    move_right(t_data *data);
+
+// close & setup
+
+int		dclose(t_data *data);
+void	setupimg(t_data *data);
+int		key_hook(int keycode, t_data *data);
+
 
 #endif
