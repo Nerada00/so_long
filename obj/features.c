@@ -6,7 +6,7 @@
 /*   By: abdmessa <abdmessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 03:19:12 by abdmessa          #+#    #+#             */
-/*   Updated: 2023/12/13 05:29:56 by abdmessa         ###   ########.fr       */
+/*   Updated: 2023/12/16 07:59:23 by abdmessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ int	check_others(t_data *data)
 	{
 		while (data->map[i][j])
 		{
-			if (data->map[i][j] != 'C' && data->map[i][j] != 'P' && data->map[i][j] != 'E'
-				&& data->map[i][j] != '0' && data->map[i][j] != '1')
+			if (data->map[i][j] != 'C' && data->map[i][j] != 'P'
+				&& data->map[i][j] != 'E' && data->map[i][j] != '0'
+				&& data->map[i][j] != '1')
 				return (0);
 			j++;
 		}
@@ -33,6 +34,7 @@ int	check_others(t_data *data)
 	}
 	return (1);
 }
+
 int	check_item(t_data *data)
 {
 	int	i;
@@ -77,13 +79,14 @@ int	check_exit(t_data *data)
 	if (count == 1)
 		return (1);
 	else
-		return (ft_printf("plusieurs sortis\n"), 0);
+		return (ft_printf("Error\nplusieurs sortis\n"), 0);
 }
+
 int	check_spawn(t_data *data)
 {
-	int i;
-	int j;
-	int count;
+	int	i;
+	int	j;
+	int	count;
 
 	count = 0;
 	i = 0;
@@ -102,7 +105,30 @@ int	check_spawn(t_data *data)
 	if (count == 1)
 		return (1);
 	else if (count > 1)
-		return (ft_printf("Plusieurs spawn\n"), 0);
+		return (ft_printf("Error\nPlusieurs spawn"), 0);
 	else
-		return (ft_printf("Aucun spawn\n"), 0);
+		return (ft_printf("Error\nAucun spawn\n"), 0);
+}
+
+int	count_c(t_data *data)
+{
+	int	i;
+	int	j;
+	int	cmp;
+
+	cmp = 0;
+	i = 0;
+	j = 0;
+	while (data->map[i])
+	{
+		while (data->map[i][j])
+		{
+			if (data->map[i][j] == 'C')
+				cmp++;
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	return (cmp);
 }

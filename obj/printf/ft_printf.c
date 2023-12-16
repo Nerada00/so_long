@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abdmessa <abdmessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:23:56 by abdmessa          #+#    #+#             */
-/*   Updated: 2023/12/13 05:28:50 by abdmessa         ###   ########.fr       */
+/*   Updated: 2023/12/16 03:54:08 by abdmessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ int	ft_check(char c, va_list arg)
 		p = va_arg(arg, void *);
 		if (!p)
 			return (write(1, "(nil)", 5));
-		return (ft_putstr("0x") + hex((unsigned long int)p, "0123456789abcdef"));
+		return (ft_putstr("0x") + hex((unsigned long int)p,
+				"0123456789abcdef"));
 	}
 	if (c == '%')
 		return (ft_putchar('%'));
@@ -94,6 +95,7 @@ int	ft_printf(const char *s, ...)
 }
 /*
 #include <stdio.h>
+
 int	main(int ac, char **av)
 {
 	int	count;

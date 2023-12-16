@@ -6,33 +6,28 @@
 /*   By: abdmessa <abdmessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 01:52:58 by abdmessa          #+#    #+#             */
-/*   Updated: 2023/12/13 06:21:56 by abdmessa         ###   ########.fr       */
+/*   Updated: 2023/12/16 08:00:46 by abdmessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// void	display_tab(char **tab)
-// {
-// 	ft_printf("\n");
-// 	for (int i = 0; tab[i]; i++)
-// 	{
-// 		ft_printf("%s\n", tab[i]);
-// 	}
-// }
 int	secure(t_data *data)
 {
+	char	*str;
+
+	str = chr_map(data->file);
 	if (checkfile(data->file) == 0)
-		return (ft_printf("%s\n", "L'extention du fichier n'est pas bonne"), 0);
-	if (chr_map(data->file) == NULL)
-		return (ft_printf("La map n'existe pas"), 0);
+		return (free(str), ft_printf("%s\n",
+				"Error\nL'extention du fichier n'est pas bonne"), 0);
+	if (!str)
+		return (ft_printf("Error\nLa map n'existe pas"), 0);
+	free((void *)str);
 	data->map = full_map(data->file);
 	if (!data->map)
-		return (ft_printf("Map introuvable\n"), 0);
+		return (ft_printf("Error\nMap introuvable\n"), 0);
 	data->tab = full_map(data->file);
-	if (all_check(data) == 0)
-		return (error(data, "Map invalide check\n"), 0);
-	return (1);
+	return (all_check(data));
 }
 
 int	path_exit(t_data *data)
@@ -57,12 +52,10 @@ int	path_exit(t_data *data)
 		}
 		if (data->tab[data->exit_y][data->exit_x] != 'E' && data->read == 0)
 			return (ft_printf("======== Sortie Trouvable ========\n\n"), 1);
-		// display_tab(data->tab);         test a chaque passage
 		else if (data->read == 0)
 			return (0);
 	}
 }
-
 
 int	path_collect(t_data *data)
 {
@@ -79,7 +72,7 @@ int	path_collect(t_data *data)
 			while (data->tab[i][j])
 			{
 				if (data->tab[i][j] == 'C')
-					return (ft_printf(" Sortie OK ====== Collectible KO\n\n"), 0);
+					return (0);
 				j++;
 			}
 			j = 0;
@@ -88,29 +81,28 @@ int	path_collect(t_data *data)
 		return (ft_printf("Map Complete OK\n\n"), 1);
 	}
 	else
-		return (ft_printf(" Map impossible\n"), 0);
+		return (ft_printf("Error\nMap impossible\n"), 0);
 }
-
 
 int	path_finding(t_data *data)
 {
 	if (secure(data) == 0)
+	{
+		if (data->tab)
+			free_doubletab(data->tab);
+		if (data->map)
+			free_doubletab(data->map);
 		return (0);
-	int i = 0;
-	ft_printf("\n==============================================================\n");
-	ft_printf("|      			     map			     |");
-	ft_printf("\n==============================================================\n\n");
+	}
 	grab_exit_pos(data);
 	grab_player_pos(data);
-	if (path_collect(data) == 1 && all_check(data) == 1)
+	if (!path_collect(data))
 	{
-		while (data->map[i])
-		{
-			ft_printf("%s  %s\n", "||", data->map[i]);
-			i++;
-		}
-		return (1);
-	}
-	else
+		if (data->tab)
+			free_doubletab(data->tab);
+		if (data->map)
+			free_doubletab(data->map);
 		return (0);
+	}
+	return (1);
 }

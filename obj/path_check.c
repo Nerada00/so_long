@@ -6,7 +6,7 @@
 /*   By: abdmessa <abdmessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 22:19:57 by abdmessa          #+#    #+#             */
-/*   Updated: 2023/12/13 04:50:34 by abdmessa         ###   ########.fr       */
+/*   Updated: 2023/12/16 04:09:35 by abdmessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	path_left(t_data *data, int i, int j)
 		j--;
 	}
 }
-
 
 void	all_path(t_data *data, int i, int j)
 {

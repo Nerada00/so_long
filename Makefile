@@ -1,5 +1,4 @@
-SRCS = obj/so_long.c \
-       obj/pars_border.c \
+SRCS = obj/pars_border.c \
        obj/main.c \
        obj/init_map.c \
        obj/get_next_line/get_next_line.c \
@@ -13,6 +12,7 @@ SRCS = obj/so_long.c \
        obj/printf/ft_printf_fonction.c \
        obj/move.c \
        obj/mlx_setup.c \
+       obj/free.c \
 
 MLX = libmlx_Linux.a
 

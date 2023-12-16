@@ -6,7 +6,7 @@
 /*   By: abdmessa <abdmessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:30:35 by abdmessa          #+#    #+#             */
-/*   Updated: 2023/12/13 06:36:17 by abdmessa         ###   ########.fr       */
+/*   Updated: 2023/12/16 08:00:06 by abdmessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int	checkfile(char *file)
 	i = 0;
 	i = ft_strlen(file);
 	if (file[i - 1] == 'r' && file[i - 2] == 'e' && file[i - 3] == 'b' && file[i
-		- 4] == '.')
-		return (ft_printf("\n[bonne extention]\n"), 1);
+			- 4] == '.')
+		return (1);
 	else
-		return (ft_printf("\n[mauvaise extention]\n"), 0);
+		return (ft_printf("Error\n[mauvaise extention]\n"), 0);
 }
+
 char	*chr_map(char *file)
 {
-
 	int		fd;
 	char	*tmp;
 	char	*str;
@@ -36,7 +36,7 @@ char	*chr_map(char *file)
 	stop = false;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (ft_printf("%s", "Erreur lors de l'ouverture\n"), NULL);
+		return (ft_printf("%s", "Error\nErreur lors de l'ouverture\n"), NULL);
 	while (1)
 	{
 		tmp = get_next_line(fd);

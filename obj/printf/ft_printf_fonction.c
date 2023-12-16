@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft_printf_fonction.c                               :+:      :+:    :+:   */
+/*   ft_printf_fonction.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abdmessa <abdmessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:24:24 by abdmessa          #+#    #+#             */
-/*   Updated: 2023/12/13 05:27:28 by abdmessa         ###   ########.fr       */
+/*   Updated: 2023/12/16 03:53:54 by abdmessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_putstr(char *str)
 
 	i = 0;
 	if (str == NULL)
-		return (write (1, "(null)", 6));
+		return (write(1, "(null)", 6));
 	while (str[i])
 	{
 		write(1, &str[i], 1);
