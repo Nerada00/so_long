@@ -18,14 +18,14 @@ require MinLibx
 import So_long
 
 # move to the left (keyboard_key)
-press('<-')
+press('Left')
 
 # move to the right (keyboard_key)
-press('->')
+press('Right')
 
 # move to the up (keyboard_key)
-press('ˆ')
+press('Up')
 
 # move to the down (keyboard_key)
-press('v')
+press('Down')
 ```
